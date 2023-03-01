@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 public class PlayAnMP3 extends Application {
 
+	// the song playing scared me lol
   public static void main(String[] args) {
     launch(args);
   }
@@ -28,12 +29,16 @@ public class PlayAnMP3 extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     BorderPane pane = new BorderPane();
-    String path = "songfiles/Capture.mp3";
+    
+    // fancy song
+    String path = "songfiles/DanseMacabreViolinHook.mp3";
     pane.setCenter( new Label(path));
     playASong(path);
     // Put the pane in a sized Scene and show the GUI
     Scene scene = new Scene(pane, 255, 85); // 255 pixels wide, 85 pixels tall
     stage.setScene(scene);
+    System.out.println("Songs played (w/o current song): " + songsPlayed);
+
     // Don't forget to show the running app:
     stage.show();
   }
@@ -44,7 +49,7 @@ public class PlayAnMP3 extends Application {
     // Need a File and URI object so the path works on all OSs
     File file = new File(path);
     URI uri = file.toURI();
-    System.out.println(uri);
+    System.out.println("URI: " + uri);
     // Play one mp3 and and have code run when the song ends
     Media media = new Media(uri.toString());
     MediaPlayer mediaPlayer = new MediaPlayer(media);
